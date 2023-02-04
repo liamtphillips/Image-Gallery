@@ -1,0 +1,69 @@
+<body>
+  <div class="col text-center">
+    <button class="btn btn-primary px-4 py-2 fs-5 mt-5" data-bs-toggle="modal"
+      data-bs-target="#booking-modal">Upload</button>
+  </div>
+  <div class="modal fade" tabindex="-1" id="booking-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header border-0">
+          <h5 class="modal-title ">Upload Image</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/" method="POST" encType="multipart/form-data">
+            Title:<br>
+            <br>
+            <input type="text" name="title" class="form-control" placeholder="Title">
+            <br>
+            Description:<br>
+            <br>
+            <input type="text" name="description" class="form-control" placeholder="Description">
+        </div>
+        <div class="modal-footer justify-content-center border-0">
+          <br>
+
+          <input class="form-control form-control-lg" type="file" name="sampleFile" accept="image/*" />
+          </label>
+          <br>
+          <input type="submit" class="btn btn-primary px-4 py-2 fs-5 mt-5 mb-5" value="Upload" s>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row" style="margin-top:40px">
+      {{#each rows}}
+      <div class="col-sm-3">
+        <div class="card text-white bg-dark mb-5" style="height: 35rem">
+          <div class="card-body text-center p-3">
+            <h5 class="card-title mb-4">{{title}}</h5>
+            <img class="card-img-top" src="{{image}}" alt="Card image cap" style="height: 22rem">
+
+            <h6 class="card-subtitle text-muted p-3">{{description}}</h6>
+            <form method="post" action="/api/delete/{{image}}">
+              <button type="submit" class="btn-danger mt-1 px-3 py-1"
+                onclick="return confirm('are you sure you want to delete {{image}}?')">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+<style type="text/css">
+  body {
+    background: #2a2f3b;
+    !important;
+  }
+</style>
+</body>
+
+</html>
